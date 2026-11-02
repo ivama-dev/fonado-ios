@@ -46,7 +46,7 @@ enum FonadoStyle {
     }
 }
 
-/// Original Fonado.AI vector wordmark, scaled uniformly with appearance variants.
+/// Original Fonado vector wordmark, scaled uniformly with appearance variants.
 struct FonadoWordmark: View {
     var width: CGFloat = 160
     var body: some View {
@@ -54,7 +54,7 @@ struct FonadoWordmark: View {
             .renderingMode(.original)
             .resizable()
             .scaledToFit()
-            .frame(width: width, height: width * 500 / 1600)
+            .frame(width: width, height: width * 500 / 1332)
             .accessibilityLabel("Fonado")
     }
 }

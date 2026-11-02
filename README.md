@@ -49,6 +49,8 @@ Die Fonado-iOS-App steht wie der Windows-Client unter **GNU Affero General Publi
 
 Das Xcode-Projekt, Target, Scheme und der Quellordner heißen **FonadoAI**; sichtbarer App-Name ist **Fonado**. Die neue Bundle-ID und lokalen Speicherkennungen trennen diese App von ihrer Vorgängerin. Die bestehenden Backend-Adressen und gemeinsam verwendeten Push-/API-Protokolle bleiben für die gemeinsame Telefonieplattform kompatibel; sie sind keine sichtbaren Produktnamen.
 
-## Markenstand Fonado.AI
+## Markenstand Fonado
 
-Die App heißt **Fonado**. Die Website und die unverändert übernommene Wortmarke verwenden die Marke **Fonado.AI**. Die App verwendet die Original-SVG-Wortmarke und das App-Icon aus dem Fonado.AI-Markenpaket. Die lokal mitgelieferten Manrope-Schriften skalieren mit Dynamic Type. Hell-/Dunkelmodus verwenden eine adaptive Palette; grüne Aktionsflächen haben anthrazitfarbenen Text. Die Schriftlizenz liegt unter `ios/FonadoAI/Fonts/OFL.txt`.
+Die App und die Wortmarke heißen **Fonado**. Die Wortmarke verwendet die gelieferten Symbol- und Buchstabenkonturen ohne den bisherigen Namenszusatz. Das App-Icon bleibt unverändert. Die lokal mitgelieferten Manrope-Schriften skalieren mit Dynamic Type. Hell-/Dunkelmodus verwenden eine adaptive Palette; grüne Aktionsflächen haben anthrazitfarbenen Text. Die Schriftlizenz liegt unter `ios/FonadoAI/Fonts/OFL.txt`.
+
+Build **0.1.0 (2)** enthält die Wortmarke **Fonado** ohne Namenszusatz. Die Domain `fonado.ai`, Bundle-ID und technischen Modulnamen bleiben erhalten.

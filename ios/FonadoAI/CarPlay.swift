@@ -78,7 +78,7 @@ final class FonadoCarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneD
     }
 }
 
-/// Siri resolves numbers or unambiguous names from the existing local Fonado.AI
+/// Siri resolves numbers or unambiguous names from the existing local Fonado
 /// favorites/history. It never chooses the first of several matching contacts.
 @MainActor
 final class FonadoCallIntentHandler: NSObject, INStartCallIntentHandling {
