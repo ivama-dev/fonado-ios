@@ -1,6 +1,6 @@
 # Fonado für iOS
 
-Native SwiftUI-App ab iOS 17 mit Liblinphone 5.5.23. Bundle-ID `ai.fonado.ios`; Xcode-Scheme **FonadoAI**. Dieses Repository enthält ausschließlich App-Quellen, App-Konfiguration, Assets, Lizenzen und isolierte Prüfungen. Der Telefonie-/Kontoserver wird separat im [Server-Repository](https://github.com/ivama-dev/fonado-ai) verwaltet.
+Native SwiftUI-App ab iOS 17 mit Liblinphone 5.5.23. Bundle-ID `ai.fonado.ios`; Xcode-Scheme **FonadoAI**. Dieses Repository enthält ausschließlich App-Quellen, App-Konfiguration, Assets, Lizenzen und isolierte Prüfungen. Der Telefonie-/Kontoserver wird separat im [Server-Repository](https://github.com/ivama-dev/fonado) verwaltet.
 
 ## Bauen und prüfen
 
@@ -33,7 +33,7 @@ Echte Geräteabnahme zwischen iPhone, Mac und Windows bleibt erforderlich. Ein e
 
 `ios/FonadoAI/` enthält Anmeldung und automatische Cloud-Nebenstelle, Geräteprofile, Team/Präsenz, Kontakte/Favoriten, synchronisierte Anrufhistorie, Weiterleitungen und Gesprächssteuerung. VoIP-Push, CallKit/LiveCommunicationKit, Siri und CarPlay bleiben erhalten. `SIPConnectionCoordinator` serialisiert Wiederverbindungen; `LinphoneSIPCore` kapselt die einzige Telefonie-Engine. Zertifikatsprüfung, Pflicht-SRTP und gerätegebundene Schlüsselbundablage bleiben aktiv.
 
-Die [Mac-App](https://github.com/ivama-dev/fonado-ai-macos) übernimmt einen kontrollierten Stand der gemeinsamen Dateien. Änderungen an Konto-, Verbindungs- und API-Modellen müssen auf beiden Plattformen abgestimmt werden.
+Die [Mac-App](https://github.com/ivama-dev/fonado-macos) übernimmt einen kontrollierten Stand der gemeinsamen Dateien. Änderungen an Konto-, Verbindungs- und API-Modellen müssen auf beiden Plattformen abgestimmt werden.
 
 ## Eigenständige App
 
