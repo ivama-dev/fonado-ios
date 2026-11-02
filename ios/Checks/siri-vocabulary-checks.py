@@ -2,13 +2,13 @@
 import plistlib,sys
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
-app=Path(sys.argv[1]) if len(sys.argv)>1 else root/'fonu'
+app=Path(sys.argv[1]) if len(sys.argv)>1 else root/'FonadoAI'
 if len(sys.argv)>1:
  info=plistlib.loads((app/'Info.plist').read_bytes())
  supported=set(info.get('INIntentsSupported',[]))
 else:
  supported=set()
- for config in [root/'fonu/Info.plist',root/'Configuration/CarPlay-Info.plist']:
+ for config in [root/'FonadoAI/Info.plist',root/'Configuration/CarPlay-Info.plist']:
   supported.update(plistlib.loads(config.read_bytes()).get('INIntentsSupported',[]))
 assert 'INStartCallIntent' in supported
 for language in ('en','de'):
@@ -17,5 +17,5 @@ for language in ('en','de'):
  assert supported<=samples.keys(),f'Missing intent examples: {language}'
  for intent in supported:
   assert isinstance(samples[intent],list) and samples[intent]
-  assert all(isinstance(phrase,str) and phrase.strip() and 'fonu' in phrase for phrase in samples[intent])
+  assert all(isinstance(phrase,str) and phrase.strip() and 'Fonado' in phrase for phrase in samples[intent])
 print('PASS: every supported Siri intent has English/German example phrases'+(' in the built app' if len(sys.argv)>1 else ''))

@@ -7,6 +7,13 @@ struct TeamDirectoryChecks {
         let context = TeamContext(tenantID: "alpha", accountID: "owner", sessionID: UUID())
         let json = #"{"schema_version":1,"tenant_id":"alpha","tenant_name":"Alpha GmbH","revision":3,"self_user_id":"owner","members":[{"id":"anna","name":"Anna Müller","email":"anna@example.at","extension":"101","personal_device_count":2,"personal_devices":[]},{"id":"owner","name":"owner@example.at","email":"owner@example.at","extension":null,"personal_device_count":0,"personal_devices":[]}]}"#
         let snapshot = try JSONDecoder().decode(TeamSnapshot.self, from: Data(json.utf8)).validated(for: context)
+        let enrichedJSON = json.replacingOccurrences(of: "\"extension\":\"101\"", with: "\"extension\":\"101\",\"position\":\"Vertrieb\",\"mobile_number\":\"+43 664 1234567\"")
+        let enriched = try JSONDecoder().decode(TeamSnapshot.self, from: Data(enrichedJSON.utf8)).validated(for: context)
+        precondition(enriched.members[0].position == "Vertrieb")
+        precondition(enriched.members[0].mobileNumber == "+43 664 1234567")
+        precondition(enriched.members[0].matches("Vertrieb 664"))
+        precondition(enriched.members[0].callContact(tenantID: "alpha")?.role == "Vertrieb")
+        precondition(snapshot.members[0].position == nil && snapshot.members[0].mobileNumber == nil)
         let anna = snapshot.members[0]
         precondition(anna.matches("MULLER"))
         precondition(anna.matches("  Anna 101 "))

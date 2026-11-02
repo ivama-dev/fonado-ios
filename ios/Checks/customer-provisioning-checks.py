@@ -2,7 +2,7 @@
 from pathlib import Path
 import subprocess
 root=Path(__file__).resolve().parents[1]
-source=(root/'fonu/CustomerAccount.swift').read_text()
+source=(root/'FonadoAI/CustomerAccount.swift').read_text()
 configuration=source[source.index('private struct CustomerConfiguration:'):source.index('struct CloudMembership:')]
 memberships=source[source.index('struct CloudMembership:'):source.index('@MainActor\nfinal class CustomerAccount:')]
 checks=r'''
@@ -68,5 +68,5 @@ checks=checks.replace('precondition(try decode(base).mediaEncryption == .none)',
 checks=checks.replace('precondition(try decode(secure).mediaEncryption == .srtp)','let cloudAccount = try decode(secure); precondition(cloudAccount.mediaEncryption == .srtp)')
 build=root/'build/checks';build.mkdir(parents=True,exist_ok=True)
 file=build/'CustomerProvisioningChecks.swift';file.write_text('import Foundation\n'+configuration+memberships+checks)
-subprocess.run(['swiftc','-parse-as-library','-module-cache-path',str(build/'module-cache'),str(root/'fonu/SIPAccount.swift'),str(file),'-o',str(build/'CustomerProvisioningChecks')],check=True)
+subprocess.run(['swiftc','-parse-as-library','-module-cache-path',str(build/'module-cache'),str(root/'FonadoAI/SIPAccount.swift'),str(file),'-o',str(build/'CustomerProvisioningChecks')],check=True)
 subprocess.run([str(build/'CustomerProvisioningChecks')],check=True)

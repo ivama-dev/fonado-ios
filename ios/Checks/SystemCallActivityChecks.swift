@@ -32,14 +32,14 @@ struct SystemCallActivityChecks {
                                    numberOfCalls: 1, isCallerIdBlocked: true)
         precondition(SystemCallActivity.contact(from: intent(nil, record: blocked)) == nil)
         let handoff = NSUserActivity(activityType: "INStartCallIntent")
-        handoff.userInfo = ["fonoo_request": "once", "fonoo_number": "100"]
+        handoff.userInfo = ["fonado_request": "once", "fonado_number": "100"]
         precondition(SystemCallActivity.request(from: handoff)?.contact.number == "100")
         precondition(SystemCallActivity.request(from: handoff)?.id == "once")
         let unsupported = NSUserActivity(activityType: "unrelated")
         unsupported.userInfo = handoff.userInfo
         precondition(SystemCallActivity.request(from: unsupported) == nil)
         let missingIdentity = NSUserActivity(activityType: "INStartCallIntent")
-        missingIdentity.userInfo = ["fonoo_number": "100"]
+        missingIdentity.userInfo = ["fonado_number": "100"]
         precondition(SystemCallActivity.request(from: missingIdentity) == nil)
         print("PASS: system redial, internal/E.164 normalization, call-record fallback, video/group/anonymous/invalid rejection and handoff identity")
     }

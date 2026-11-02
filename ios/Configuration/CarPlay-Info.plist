@@ -3,20 +3,20 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>fonu</string>
+	<string>Fonado</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleName</key>
-	<string>fonu</string>
+	<string>FonadoAI</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>fonuCarPlayEnabled</key>
+	<key>fonadoCarPlayEnabled</key>
 	<true/>
 	<key>INIntentsSupported</key>
 	<array>
@@ -25,15 +25,15 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>fonu verwendet die Kamera zum Scannen deines Einrichtungscodes.</string>
+	<string>Fonado verwendet die Kamera zum Scannen deines Einrichtungscodes.</string>
 	<key>NSContactsUsageDescription</key>
-	<string>fonu benötigt Zugriff auf Namen und Telefonnummern, damit du deine iPhone-Kontakte suchen und anrufen kannst. Dein Adressbuch wird nicht hochgeladen.</string>
+	<string>Fonado benötigt Zugriff auf Namen und Telefonnummern, damit du deine iPhone-Kontakte suchen und anrufen kannst. Dein Adressbuch wird nicht hochgeladen.</string>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>fonu verbindet sich mit deiner Telefonanlage im lokalen Netzwerk.</string>
+	<string>Fonado verbindet sich mit deiner Telefonanlage im lokalen Netzwerk.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>fonu benötigt das Mikrofon für deine Telefongespräche.</string>
+	<string>Fonado benötigt das Mikrofon für deine Telefongespräche.</string>
 	<key>NSSiriUsageDescription</key>
-	<string>fonu verwendet Siri, damit du im Auto freihändig über deine Firmennebenstelle anrufen kannst.</string>
+	<string>Fonado verwendet Siri, damit du im Auto freihändig über deine Firmennebenstelle anrufen kannst.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>INStartCallIntent</string>
@@ -49,11 +49,11 @@
 			<array>
 				<dict>
 					<key>UISceneConfigurationName</key>
-					<string>fonu CarPlay</string>
+					<string>Fonado CarPlay</string>
 					<key>UISceneClassName</key>
 					<string>CPTemplateApplicationScene</string>
 					<key>UISceneDelegateClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).fonuCarPlaySceneDelegate</string>
+					<string>$(PRODUCT_MODULE_NAME).FonadoCarPlaySceneDelegate</string>
 				</dict>
 			</array>
 		</dict>
@@ -70,6 +70,12 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Fonts/Manrope-Regular.ttf</string>
+		<string>Fonts/Manrope-SemiBold.ttf</string>
+		<string>Fonts/Manrope-Bold.ttf</string>
 	</array>
 </dict>
 </plist>

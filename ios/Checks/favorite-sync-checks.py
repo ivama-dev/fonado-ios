@@ -6,7 +6,7 @@ import tempfile
 
 root = Path(__file__).resolve().parents[1]
 if not (root / 'Shared').is_dir(): root = root.parent
-sources = root / 'Shared' if (root / 'Shared').is_dir() else root / 'ios/fonu'
+sources = root / 'Shared' if (root / 'Shared').is_dir() else root / 'ios/FonadoAI'
 phone = (sources / 'PhoneStore.swift').read_text()
 methods = phone[phone.index('    /// Capture the pre-upgrade account'):].rsplit('}', 1)[0]
 customer = (sources / 'CustomerAccount.swift').read_text()
@@ -23,7 +23,7 @@ import Combine
     var favoriteConflict = false
     var favoriteEditingError: String?
     var canImportLegacyFavorites: Bool {
-        favoriteOwner != nil && favoritesDefaults.string(forKey: "fonoo.favorites.legacyOwner") == ""
+        favoriteOwner != nil && favoritesDefaults.string(forKey: "fonado.favorites.legacyOwner") == ""
             && FileManager.default.fileExists(atPath: legacyFavoritesStore.url.path)
     }
     var favorites: [Contact] { favoriteLibrary.contacts }
@@ -80,7 +80,7 @@ private extension CloudFavoritesSync {
 @main struct FavoriteSyncChecks {
     @MainActor static func main() async throws {
         let root = URL(fileURLWithPath: CommandLine.arguments[1], isDirectory: true)
-        let suite = "fonoo.favorite.check." + UUID().uuidString
+        let suite = "fonado.favorite.check." + UUID().uuidString
         let defaults = UserDefaults(suiteName: suite)!
         defer { defaults.removePersistentDomain(forName: suite) }
         let first = root.appendingPathComponent("one"), second = root.appendingPathComponent("two")
@@ -88,8 +88,8 @@ private extension CloudFavoritesSync {
         let contact = Contact(id: "example", name: "Example", role: "work", number: "101")
         try legacy.save([contact])
         let before = try Data(contentsOf: legacy.url)
-        defaults.set(["account_id": "user-a"], forKey: "fonoo.cloud.selected.v2")
-        defaults.set(false, forKey: "fonoo.favorites.sync.user-a")
+        defaults.set(["account_id": "user-a"], forKey: "fonado.cloud.selected.v2")
+        defaults.set(false, forKey: "fonado.favorites.sync.user-a")
         let phone = PhoneStore(first, defaults: defaults), backend = Backend()
         phone.selectFavoriteOwner("user-a", importLegacy: true)
         assert(phone.favoriteSyncEnabled)
@@ -98,7 +98,7 @@ private extension CloudFavoritesSync {
         let worker = CloudFavoritesSync(phone: phone, read: backend.read, write: backend.write)
         worker.selectForChecks("user-a"); phone.onFavoritesChanged = nil
         await worker.runForChecks()
-        assert(phone.favoriteSyncStatus == "Mit deinem fonu-Konto synchronisiert")
+        assert(phone.favoriteSyncStatus == "Mit deinem Fonado-Konto synchronisiert")
         let intact = try Data(contentsOf: legacy.url); assert(before == intact)
         print("PASS: legacy favorites adopted once for confirmed owner, original file preserved and cloud synced")
 
@@ -197,7 +197,7 @@ private extension CloudFavoritesSync {
         let unknownFolder = root.appendingPathComponent("unknown")
         try FavoritesStore(url: unknownFolder.appendingPathComponent("favorites.json")).save([contact])
         let unknown = PhoneStore(unknownFolder, defaults: unknownDefaults)
-        unknownDefaults.set(["account_id": "user-new"], forKey: "fonoo.cloud.selected.v2")
+        unknownDefaults.set(["account_id": "user-new"], forKey: "fonado.cloud.selected.v2")
         unknown.selectFavoriteOwner("user-new", importLegacy: true)
         assert(unknown.favorites.isEmpty)
         unknown.importLegacyFavorites()
@@ -209,7 +209,7 @@ private extension CloudFavoritesSync {
     }
 }
 '''
-with tempfile.TemporaryDirectory(prefix='fonu-favorite-checks-') as directory:
+with tempfile.TemporaryDirectory(prefix='fonado-favorite-checks-') as directory:
     temp = Path(directory)
     source = temp / 'Checks.swift'
     source.write_text(stub + methods + '}\n' + worker + checks)

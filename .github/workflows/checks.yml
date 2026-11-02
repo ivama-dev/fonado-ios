@@ -23,7 +23,7 @@ jobs:
           persist-credentials: false
       - name: Check iOS shared models
         env:
-          FONU_CHECK_BUILD_DIR: ${{ runner.temp }}/fonuIOSModels
+          FONADO_CHECK_BUILD_DIR: ${{ runner.temp }}/FonadoAIModels
         run: bash ios/Checks/run-checks.sh
       - name: Check account provisioning
         run: python3 ios/Checks/customer-provisioning-checks.py

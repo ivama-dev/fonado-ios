@@ -1,8 +1,8 @@
 # Copyright und Drittanbieter
 
-Copyright (C) 2026 fonu contributors.
+Copyright (C) 2026 Fonado.AI contributors.
 
-Der ursprüngliche fonu-iOS-App-Code und das zugehörige Projektmaterial in diesem Repository stehen unter der **GNU Affero General Public License, Version 3 oder (nach eigener Wahl) jeder späteren Version** (`AGPL-3.0-or-later`), ohne Gewährleistung. Siehe [LICENSE](LICENSE). fonu-Namen und Marken erteilen keine Zustimmung oder Berechtigung, geänderte Software als offizielle fonu-Veröffentlichung auszugeben.
+Der ursprüngliche Fonado.AI-iOS-App-Code und das zugehörige Projektmaterial in diesem Repository stehen unter der **GNU Affero General Public License, Version 3 oder (nach eigener Wahl) jeder späteren Version** (`AGPL-3.0-or-later`), ohne Gewährleistung. Siehe [LICENSE](LICENSE). Fonado.AI-Namen und Marken erteilen keine Zustimmung oder Berechtigung, geänderte Software als offizielle Fonado.AI-Veröffentlichung auszugeben.
 
 Drittanbieter behalten ihre eigenen Urheberrechte und Lizenzen. Die Projektlizenz lizenziert Drittanbieter-Software nicht neu:
 

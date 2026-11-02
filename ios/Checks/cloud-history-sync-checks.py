@@ -5,7 +5,7 @@ import subprocess
 import tempfile
 
 root = Path(__file__).resolve().parents[2]
-source = (root / 'ios/fonu/CustomerAccount.swift').read_text()
+source = (root / 'ios/FonadoAI/CustomerAccount.swift').read_text()
 controller = source[source.index('@MainActor\nprivate final class CloudCallHistorySync'):]
 stub = r'''
 import Foundation
@@ -113,11 +113,11 @@ private extension CloudCallHistorySync {
     }
 }
 '''
-with tempfile.TemporaryDirectory(prefix='fonu-history-sync-') as directory:
+with tempfile.TemporaryDirectory(prefix='fonado-history-sync-') as directory:
     folder = Path(directory)
     harness = folder / 'HistorySyncChecks.swift'
     harness.write_text(stub + controller + checks)
     binary = folder / 'checks'
     subprocess.run(['swiftc', '-parse-as-library', '-module-cache-path', str(folder / 'module-cache'),
-        str(root / 'ios/fonu/CallSession.swift'), str(harness), '-o', str(binary)], check=True)
+        str(root / 'ios/FonadoAI/CallSession.swift'), str(harness), '-o', str(binary)], check=True)
     subprocess.run([str(binary), str(folder / 'cache')], check=True, timeout=15)
